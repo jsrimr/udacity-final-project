@@ -1,5 +1,15 @@
 # Risk-aware RL using rainbow IQN
 
+## Table of contents
+* [Project Overview](#Project-Overview)
+* [Usage](#Usage)
+* [Data Exploration](#Data-Exloration)
+* [Methodology](#Methodology)
+* [Results](#Results)
+* [Conclusion](#Conclusion)
+
+### Blog post is available at [here](https://medium.com/@jsrimr2/risk-aware-crypto-trading-agent-using-rainbow-iqn-b208a735384d)
+
 ### Visualization of Trading result on 3X leverage Trading Env.
 ![](trade_visualization.png)
 
@@ -16,6 +26,24 @@ Return rate
 
 Simulate trading on test data out of the training data time and measure the return rate.
 
+
+## Usage
+
+Train
+```
+python train_leverage.py --data_path=binance_futures_1d_train.db 
+```
+
+Test
+```
+python test.py --data_path=binance_futures_1d_test.db --load_file=saves/2021-12-31-01:14:16/IQN_leverage_1200.pth
+```
+
+To change the risk-preference, change the RISK_AVERSE
+in default_hyperparameters.py
+
+## Requirements
+you can check libraries we used at [requirments](requirements.txt)
 
 ## Data Exploration
 We use daily bitcoin OHLCV (open-high-low-close-volume) data starting ranging 2017-01-01~2021-12-30
@@ -94,23 +122,3 @@ It needs more tunings if it were to put in real usage.
 
 ### Further work
 [ ] Use multiple assets at the same time rather than trade bitcoin only
-
-## Usage
-
-Train
-```
-python train_leverage.py --data_path=binance_futures_1d_train.db 
-```
-
-Test
-```
-python test.py --data_path=binance_futures_1d_test.db --load_file=saves/2021-12-31-01:14:16/IQN_leverage_1200.pth
-```
-
-
-
-To change the risk-preference, change the RISK_AVERSE
-in default_hyperparameters.py
-
-## Requirements
-you can check libraries we used at [requirments](requirements.txt)
